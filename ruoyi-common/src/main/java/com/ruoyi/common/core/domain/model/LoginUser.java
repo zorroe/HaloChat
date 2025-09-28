@@ -4,8 +4,8 @@ import com.alibaba.fastjson2.annotation.JSONField;
 import com.ruoyi.common.core.domain.entity.SysUser;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
+
 import java.util.Collection;
-import java.util.Set;
 
 /**
  * 登录用户身份权限
@@ -20,11 +20,6 @@ public class LoginUser implements UserDetails
      * 用户ID
      */
     private Long userId;
-
-    /**
-     * 部门ID
-     */
-    private Long deptId;
 
     /**
      * 用户唯一标识
@@ -62,11 +57,6 @@ public class LoginUser implements UserDetails
     private String os;
 
     /**
-     * 权限列表
-     */
-    private Set<String> permissions;
-
-    /**
      * 用户信息
      */
     private SysUser user;
@@ -75,18 +65,15 @@ public class LoginUser implements UserDetails
     {
     }
 
-    public LoginUser(SysUser user, Set<String> permissions)
+    public LoginUser(SysUser user)
     {
         this.user = user;
-        this.permissions = permissions;
     }
 
-    public LoginUser(Long userId, Long deptId, SysUser user, Set<String> permissions)
+    public LoginUser(Long userId, SysUser user)
     {
         this.userId = userId;
-        this.deptId = deptId;
         this.user = user;
-        this.permissions = permissions;
     }
 
     public Long getUserId()
@@ -97,16 +84,6 @@ public class LoginUser implements UserDetails
     public void setUserId(Long userId)
     {
         this.userId = userId;
-    }
-
-    public Long getDeptId()
-    {
-        return deptId;
-    }
-
-    public void setDeptId(Long deptId)
-    {
-        this.deptId = deptId;
     }
 
     public String getToken()
@@ -236,16 +213,6 @@ public class LoginUser implements UserDetails
     public void setExpireTime(Long expireTime)
     {
         this.expireTime = expireTime;
-    }
-
-    public Set<String> getPermissions()
-    {
-        return permissions;
-    }
-
-    public void setPermissions(Set<String> permissions)
-    {
-        this.permissions = permissions;
     }
 
     public SysUser getUser()

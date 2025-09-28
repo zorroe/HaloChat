@@ -1,15 +1,5 @@
 package com.ruoyi.web.controller.system;
 
-import java.util.Map;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.PutMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
-import org.springframework.web.multipart.MultipartFile;
 import com.ruoyi.common.annotation.Log;
 import com.ruoyi.common.config.RuoYiConfig;
 import com.ruoyi.common.core.controller.BaseController;
@@ -25,6 +15,11 @@ import com.ruoyi.common.utils.file.FileUtils;
 import com.ruoyi.common.utils.file.MimeTypeUtils;
 import com.ruoyi.framework.web.service.TokenService;
 import com.ruoyi.system.service.ISysUserService;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
+
+import java.util.Map;
 
 /**
  * 个人信息 业务处理
@@ -49,10 +44,7 @@ public class SysProfileController extends BaseController
     {
         LoginUser loginUser = getLoginUser();
         SysUser user = loginUser.getUser();
-        AjaxResult ajax = AjaxResult.success(user);
-        ajax.put("roleGroup", userService.selectUserRoleGroup(loginUser.getUsername()));
-        ajax.put("postGroup", userService.selectUserPostGroup(loginUser.getUsername()));
-        return ajax;
+        return AjaxResult.success(user);
     }
 
     /**

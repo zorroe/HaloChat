@@ -1,7 +1,8 @@
 package com.ruoyi.common.constant;
 
-import java.util.Locale;
 import io.jsonwebtoken.Claims;
+
+import java.util.Locale;
 
 /**
  * 通用常量信息
@@ -79,21 +80,6 @@ public class Constants
      * 管理员角色权限标识
      */
     public static final String SUPER_ADMIN = "admin";
-
-    /**
-     * 角色权限分隔符
-     */
-    public static final String ROLE_DELIMETER = ",";
-
-    /**
-     * 权限标识分隔符
-     */
-    public static final String PERMISSION_DELIMETER = ",";
-
-    /**
-     * 验证码有效期（分钟）
-     */
-    public static final Integer CAPTCHA_EXPIRATION = 2;
 
     /**
      * 令牌
