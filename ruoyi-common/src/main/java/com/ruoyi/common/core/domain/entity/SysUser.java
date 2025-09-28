@@ -55,9 +55,6 @@ public class SysUser extends BaseEntity
     /** 最后登录时间 */
     private Date loginDate;
 
-    /** 密码最后更新时间 */
-    private Date pwdUpdateDate;
-
     public SysUser()
     {
 
@@ -207,16 +204,6 @@ public class SysUser extends BaseEntity
         this.loginDate = loginDate;
     }
 
-    public Date getPwdUpdateDate()
-    {
-        return pwdUpdateDate;
-    }
-
-    public void setPwdUpdateDate(Date pwdUpdateDate)
-    {
-        this.pwdUpdateDate = pwdUpdateDate;
-    }
-
     @Override
     public String toString() {
         return new ToStringBuilder(this,ToStringStyle.MULTI_LINE_STYLE)
@@ -232,7 +219,6 @@ public class SysUser extends BaseEntity
             .append("delFlag", getDelFlag())
             .append("loginIp", getLoginIp())
             .append("loginDate", getLoginDate())
-            .append("pwdUpdateDate", getPwdUpdateDate())
             .append("createBy", getCreateBy())
             .append("createTime", getCreateTime())
             .append("updateBy", getUpdateBy())
