@@ -5,3 +5,6 @@ spring:
         username: chat
         password: y8NAiM7m7chP43bb
         driver-class-name: com.mysql.cj.jdbc.Driver
+
+mybatis-plus:
+    mapper-locations: classpath*:mappers/**/*.xml # 配置mapper文件位置

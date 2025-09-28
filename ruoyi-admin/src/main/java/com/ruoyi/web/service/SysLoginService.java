@@ -30,8 +30,8 @@ public class SysLoginService
     @Resource
     private AuthenticationManager authenticationManager;
     
-//    @Autowired
-//    private ISysUserService userService;
+    @Autowired
+    private ISysUserService userService;
 
     /**
      * 登录验证

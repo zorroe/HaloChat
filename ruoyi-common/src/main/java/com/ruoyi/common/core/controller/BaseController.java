@@ -1,10 +1,7 @@
 package com.ruoyi.common.core.controller;
 
-import com.github.pagehelper.PageInfo;
-import com.ruoyi.common.constant.HttpStatus;
 import com.ruoyi.common.core.domain.AjaxResult;
 import com.ruoyi.common.core.domain.model.LoginUser;
-import com.ruoyi.common.core.page.TableDataInfo;
 import com.ruoyi.common.utils.DateUtils;
 import com.ruoyi.common.utils.SecurityUtils;
 import com.ruoyi.common.utils.StringUtils;
@@ -15,7 +12,6 @@ import org.springframework.web.bind.annotation.InitBinder;
 
 import java.beans.PropertyEditorSupport;
 import java.util.Date;
-import java.util.List;
 
 /**
  * web层通用数据处理
@@ -41,20 +37,6 @@ public class BaseController
                 setValue(DateUtils.parseDate(text));
             }
         });
-    }
-
-    /**
-     * 响应请求分页数据
-     */
-    @SuppressWarnings({ "rawtypes", "unchecked" })
-    protected TableDataInfo getDataTable(List<?> list)
-    {
-        TableDataInfo rspData = new TableDataInfo();
-        rspData.setCode(HttpStatus.SUCCESS);
-        rspData.setMsg("查询成功");
-        rspData.setRows(list);
-        rspData.setTotal(new PageInfo(list).getTotal());
-        return rspData;
     }
 
     /**
@@ -146,7 +128,7 @@ public class BaseController
     /**
      * 获取登录用户id
      */
-    public Long getUserId()
+    public String getUserId()
     {
         return getLoginUser().getUserId();
     }

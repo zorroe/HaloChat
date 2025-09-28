@@ -7,6 +7,7 @@ import com.ruoyi.common.core.domain.model.LoginBody;
 import com.ruoyi.common.core.domain.model.LoginUser;
 import com.ruoyi.common.utils.SecurityUtils;
 import com.ruoyi.web.service.SysLoginService;
+import com.ruoyi.web.service.TokenService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -24,8 +25,8 @@ public class SysLoginController
     @Autowired
     private SysLoginService loginService;
 
-//    @Autowired
-//    private TokenService tokenService;
+    @Autowired
+    private TokenService tokenService;
 
     /**
      * 登录方法
@@ -53,7 +54,7 @@ public class SysLoginController
     {
         LoginUser loginUser = SecurityUtils.getLoginUser();
         SysUser user = loginUser.getUser();
-//        tokenService.refreshToken(loginUser);
+        tokenService.refreshToken(loginUser);
         AjaxResult ajax = AjaxResult.success();
         ajax.put("user", user);
         return ajax;

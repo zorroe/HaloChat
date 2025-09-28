@@ -1,9 +1,9 @@
 package com.ruoyi.web.controller;
 
+import cn.hutool.core.text.CharSequenceUtil;
 import com.ruoyi.common.core.controller.BaseController;
 import com.ruoyi.common.core.domain.AjaxResult;
 import com.ruoyi.common.core.domain.model.RegisterBody;
-import com.ruoyi.common.utils.StringUtils;
 import com.ruoyi.web.service.SysRegisterService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -25,6 +25,6 @@ public class SysRegisterController extends BaseController
     public AjaxResult register(@RequestBody RegisterBody user)
     {
         String msg = registerService.register(user);
-        return StringUtils.isEmpty(msg) ? success() : error(msg);
+        return CharSequenceUtil.isEmpty(msg) ? success() : error(msg);
     }
 }
