@@ -27,7 +27,7 @@ public class UserDetailsServiceImpl implements UserDetailsService
 {
     private static final Logger log = LoggerFactory.getLogger(UserDetailsServiceImpl.class);
     
-    @Autowired
+    @Resource
     private SysPasswordService passwordService;
 
     @Resource

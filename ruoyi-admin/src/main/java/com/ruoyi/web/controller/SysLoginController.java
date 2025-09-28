@@ -2,17 +2,13 @@ package com.ruoyi.web.controller;
 
 import com.ruoyi.common.constant.Constants;
 import com.ruoyi.common.core.domain.AjaxResult;
-import com.ruoyi.common.core.domain.entity.SysUser;
 import com.ruoyi.common.core.domain.model.LoginBody;
-import com.ruoyi.common.core.domain.model.LoginUser;
-import com.ruoyi.common.utils.SecurityUtils;
 import com.ruoyi.web.service.SysLoginService;
-import com.ruoyi.web.service.TokenService;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
+
+import javax.annotation.Resource;
 
 /**
  * 登录验证
@@ -22,11 +18,8 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 public class SysLoginController
 {
-    @Autowired
+    @Resource
     private SysLoginService loginService;
-
-    @Autowired
-    private TokenService tokenService;
 
     /**
      * 登录方法
@@ -43,20 +36,5 @@ public class SysLoginController
         ajax.put(Constants.TOKEN, token);
         return ajax;
     }
-
-    /**
-     * 获取用户信息
-     * 
-     * @return 用户信息
-     */
-    @GetMapping("getInfo")
-    public AjaxResult getInfo()
-    {
-        LoginUser loginUser = SecurityUtils.getLoginUser();
-        SysUser user = loginUser.getUser();
-        tokenService.refreshToken(loginUser);
-        AjaxResult ajax = AjaxResult.success();
-        ajax.put("user", user);
-        return ajax;
-    }
+    
 }
