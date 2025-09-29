@@ -112,3 +112,14 @@ xss:
   excludes: /system/notice
   # 匹配链接
   urlPatterns: /system/*,/monitor/*,/tool/*
+
+# MinIO配置
+minio:
+  # MinIO服务地址 (例如: http://localhost:9000)
+  endpoint: http://192.168.1.101:19000
+  # 访问密钥
+  accessKey: IYWnb1wSpG1jwbncRaSI
+  # 私有密钥
+  secretKey: hjHwbk5mEwONjuZ6LczPCW6Wiq4y5Ma0rs0Yhp8z
+  # 存储桶名称
+  bucketName: chat-avatar

@@ -46,6 +46,10 @@ public class SysUserServiceImpl extends ServiceImpl<SysUserMapper, SysUser> impl
         user.setPhonenumber(sysUser.getPhonenumber());
         user.setEmail(sysUser.getEmail());
         user.setSex(sysUser.getSex());
+        // 更新头像信息（如果提供了新头像）
+        if (sysUser.getAvatar() != null) {
+            user.setAvatar(sysUser.getAvatar());
+        }
         return updateById(user);
     }
 }
