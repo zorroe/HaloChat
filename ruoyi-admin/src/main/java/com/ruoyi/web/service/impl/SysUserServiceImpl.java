@@ -3,9 +3,14 @@ package com.ruoyi.web.service.impl;
 import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.ruoyi.common.core.domain.entity.SysUser;
+import com.ruoyi.common.core.domain.model.LoginUser;
 import com.ruoyi.web.mapper.SysUserMapper;
 import com.ruoyi.web.service.ISysUserService;
+import com.ruoyi.web.service.TokenService;
 import org.springframework.stereotype.Service;
+
+import javax.annotation.Resource;
+import javax.servlet.http.HttpServletRequest;
 
 /**
  * <p>
@@ -18,9 +23,29 @@ import org.springframework.stereotype.Service;
 @Service
 public class SysUserServiceImpl extends ServiceImpl<SysUserMapper, SysUser> implements ISysUserService {
 
+    @Resource
+    private TokenService tokenService;
+
     @Override
     public boolean checkUserNameUnique(SysUser sysUser) {
         LambdaQueryWrapper<SysUser> queryWrapper = new LambdaQueryWrapper<SysUser>().eq(SysUser::getUserName, sysUser.getUserName());
         return count(queryWrapper) == 0;
+    }
+
+    @Override
+    public SysUser getCurrentUser(HttpServletRequest request) {
+        LoginUser loginUser = tokenService.getLoginUser(request);
+        return loginUser.getUser();
+    }
+
+    @Override
+    public boolean updateUser(SysUser sysUser, HttpServletRequest request) {
+        LoginUser loginUser = tokenService.getLoginUser(request);
+        SysUser user = loginUser.getUser();
+        user.setNickName(sysUser.getNickName());
+        user.setPhonenumber(sysUser.getPhonenumber());
+        user.setEmail(sysUser.getEmail());
+        user.setSex(sysUser.getSex());
+        return updateById(user);
     }
 }

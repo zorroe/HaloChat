@@ -11,9 +11,9 @@ import org.springframework.web.bind.annotation.RestController;
 import javax.annotation.Resource;
 
 /**
- * 登录验证
+ * LoginController
  * 
- * @author ruoyi
+ * @author zorroe
  */
 @RestController
 public class SysLoginController

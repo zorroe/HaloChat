@@ -12,9 +12,9 @@ import org.springframework.web.bind.annotation.RestController;
 import javax.annotation.Resource;
 
 /**
- * 注册验证
+ * RegisterController
  * 
- * @author ruoyi
+ * @author zorroe
  */
 @RestController
 public class SysRegisterController extends BaseController
