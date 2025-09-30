@@ -1,8 +1,8 @@
 package com.ruoyi.web.security.filter;
 
-import com.ruoyi.common.core.domain.model.LoginUser;
-import com.ruoyi.common.utils.SecurityUtils;
-import com.ruoyi.common.utils.StringUtils;
+import com.ruoyi.web.domain.model.LoginUser;
+import com.ruoyi.web.utils.SecurityUtils;
+import com.ruoyi.web.utils.StringUtils;
 import com.ruoyi.web.service.TokenService;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.context.SecurityContextHolder;

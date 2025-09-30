@@ -1,7 +1,7 @@
 package com.ruoyi.web.mapper;
 
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
-import com.ruoyi.common.core.domain.entity.SysUser;
+import com.ruoyi.web.domain.entity.SysUser;
 import org.apache.ibatis.annotations.Mapper;
 
 /**

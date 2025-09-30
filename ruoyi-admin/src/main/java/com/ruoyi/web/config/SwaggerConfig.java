@@ -1,6 +1,5 @@
 package com.ruoyi.web.config;
 
-import com.ruoyi.common.config.RuoYiConfig;
 import io.swagger.annotations.ApiOperation;
 import io.swagger.models.auth.In;
 import org.springframework.beans.factory.annotation.Value;

@@ -1,12 +1,10 @@
 package com.ruoyi.web.controller;
 
-import com.ruoyi.common.core.domain.AjaxResult;
-import com.ruoyi.common.core.domain.entity.SysUser;
+import com.ruoyi.web.domain.AjaxResult;
+import com.ruoyi.web.domain.entity.SysUser;
 import com.ruoyi.web.service.IFileService;
 import com.ruoyi.web.service.ISysUserService;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
-import org.springframework.web.multipart.MultipartFile;
 
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;

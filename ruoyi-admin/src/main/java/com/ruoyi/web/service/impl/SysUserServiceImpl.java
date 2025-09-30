@@ -2,8 +2,8 @@ package com.ruoyi.web.service.impl;
 
 import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
-import com.ruoyi.common.core.domain.entity.SysUser;
-import com.ruoyi.common.core.domain.model.LoginUser;
+import com.ruoyi.web.domain.entity.SysUser;
+import com.ruoyi.web.domain.model.LoginUser;
 import com.ruoyi.web.mapper.SysUserMapper;
 import com.ruoyi.web.service.ISysUserService;
 import com.ruoyi.web.service.TokenService;

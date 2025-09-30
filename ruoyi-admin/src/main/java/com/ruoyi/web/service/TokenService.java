@@ -1,13 +1,13 @@
 package com.ruoyi.web.service;
 
-import com.ruoyi.common.constant.CacheConstants;
-import com.ruoyi.common.constant.Constants;
-import com.ruoyi.common.core.domain.model.LoginUser;
-import com.ruoyi.common.core.redis.RedisCache;
-import com.ruoyi.common.utils.ServletUtils;
-import com.ruoyi.common.utils.StringUtils;
-import com.ruoyi.common.utils.ip.AddressUtils;
-import com.ruoyi.common.utils.ip.IpUtils;
+import com.ruoyi.web.constant.CacheConstants;
+import com.ruoyi.web.constant.Constants;
+import com.ruoyi.web.domain.model.LoginUser;
+import com.ruoyi.web.core.redis.RedisCache;
+import com.ruoyi.web.utils.ServletUtils;
+import com.ruoyi.web.utils.StringUtils;
+import com.ruoyi.web.utils.ip.AddressUtils;
+import com.ruoyi.web.utils.ip.IpUtils;
 import eu.bitwalker.useragentutils.UserAgent;
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jwts;

@@ -1,25 +1,22 @@
 package com.ruoyi.web.service.impl;
 
 import cn.hutool.core.lang.UUID;
-import cn.hutool.http.HttpStatus;
-import com.ruoyi.common.config.MinioConfig;
-import com.ruoyi.common.constant.FileConstants;
-import com.ruoyi.common.exception.file.FileException;
-import com.ruoyi.common.exception.file.InvalidExtensionException;
-import com.ruoyi.common.utils.DateUtils;
-import com.ruoyi.common.utils.StringUtils;
-import com.ruoyi.common.utils.file.FileValidationUtils;
-import com.ruoyi.common.utils.file.MimeTypeUtils;
-import com.ruoyi.common.utils.file.MinioUtil;
+import com.ruoyi.web.config.MinioConfig;
+import com.ruoyi.web.constant.FileConstants;
+import com.ruoyi.web.exception.file.FileException;
+import com.ruoyi.web.exception.file.InvalidExtensionException;
+import com.ruoyi.web.utils.DateUtils;
+import com.ruoyi.web.utils.StringUtils;
+import com.ruoyi.web.utils.file.FileValidationUtils;
+import com.ruoyi.web.utils.file.MinioUtil;
 import com.ruoyi.web.service.IFileService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
-import java.util.Arrays;
 import java.util.Objects;
 
-import static com.ruoyi.common.utils.file.MimeTypeUtils.getExtension;
+import static com.ruoyi.web.utils.file.MimeTypeUtils.getExtension;
 
 /**
  * 文件上传服务实现

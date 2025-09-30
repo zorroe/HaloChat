@@ -8,11 +8,11 @@ import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
 import org.springframework.boot.web.servlet.FilterRegistrationBean;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import com.ruoyi.common.constant.Constants;
-import com.ruoyi.common.filter.RefererFilter;
-import com.ruoyi.common.filter.RepeatableFilter;
-import com.ruoyi.common.filter.XssFilter;
-import com.ruoyi.common.utils.StringUtils;
+import com.ruoyi.web.constant.Constants;
+import com.ruoyi.web.filter.RefererFilter;
+import com.ruoyi.web.filter.RepeatableFilter;
+import com.ruoyi.web.filter.XssFilter;
+import com.ruoyi.web.utils.StringUtils;
 
 /**
  * Filter配置

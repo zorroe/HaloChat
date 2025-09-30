@@ -20,7 +20,6 @@ public class CodeGenerator {
         FastAutoGenerator.create("jdbc:mysql://192.168.1.101:13306/chat?useUnicode=true&characterEncoding=utf8&zeroDateTimeBehavior=convertToNull&useSSL=true&serverTimezone=GMT%2B8", "chat", "y8NAiM7m7chP43bb")
                 .globalConfig(builder -> {
                     builder.author("zorroe") // 设置作者
-                            .enableSwagger() // 开启 swagger 模式
                             .outputDir("E://"); // 指定输出目录
                 })
                 .dataSourceConfig(builder ->
@@ -34,13 +33,13 @@ public class CodeGenerator {
                         })
                 )
                 .packageConfig(builder ->
-                        builder.parent("com.baomidou.mybatisplus.samples.generator") // 设置父包名
+                        builder.parent("com.ruoyi.common.core.domain.entity") // 设置父包名
                                 .moduleName("system") // 设置父包模块名
                                 .pathInfo(Collections.singletonMap(OutputFile.xml, "D://")) // 设置mapperXml生成路径
                 )
                 .strategyConfig(builder -> {
                             builder.entityBuilder().enableLombok();
-                            builder.addInclude("sys_user");
+                            builder.addInclude("sys_friend_apply", "sys_friend_relation");
                         }
                 )
                 .templateEngine(new FreemarkerTemplateEngine()) // 使用Freemarker引擎模板，默认的是Velocity引擎模板

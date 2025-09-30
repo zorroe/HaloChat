@@ -1,8 +1,8 @@
 package com.ruoyi.web.controller;
 
-import com.ruoyi.common.constant.Constants;
-import com.ruoyi.common.core.domain.AjaxResult;
-import com.ruoyi.common.core.domain.model.LoginBody;
+import com.ruoyi.web.constant.Constants;
+import com.ruoyi.web.domain.AjaxResult;
+import com.ruoyi.web.domain.model.LoginBody;
 import com.ruoyi.web.service.SysLoginService;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;

@@ -1,7 +1,7 @@
 package com.ruoyi.web.service;
 
 import com.baomidou.mybatisplus.extension.service.IService;
-import com.ruoyi.common.core.domain.entity.SysUser;
+import com.ruoyi.web.domain.entity.SysUser;
 
 import javax.servlet.http.HttpServletRequest;
 

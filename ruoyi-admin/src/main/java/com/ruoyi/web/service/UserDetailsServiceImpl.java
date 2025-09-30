@@ -1,15 +1,14 @@
 package com.ruoyi.web.service;
 
 import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
-import com.ruoyi.common.core.domain.entity.SysUser;
-import com.ruoyi.common.core.domain.model.LoginUser;
-import com.ruoyi.common.enums.UserStatus;
-import com.ruoyi.common.exception.ServiceException;
-import com.ruoyi.common.utils.MessageUtils;
-import com.ruoyi.common.utils.StringUtils;
+import com.ruoyi.web.domain.entity.SysUser;
+import com.ruoyi.web.domain.model.LoginUser;
+import com.ruoyi.web.enums.UserStatus;
+import com.ruoyi.web.exception.ServiceException;
+import com.ruoyi.web.utils.MessageUtils;
+import com.ruoyi.web.utils.StringUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;

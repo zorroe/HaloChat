@@ -169,13 +169,6 @@
                 <version>${jwt.version}</version>
             </dependency>
 
-            <!-- 通用工具-->
-            <dependency>
-                <groupId>com.ruoyi</groupId>
-                <artifactId>ruoyi-common</artifactId>
-                <version>${ruoyi.version}</version>
-            </dependency>
-
             <dependency>
                 <groupId>com.baomidou</groupId>
                 <artifactId>mybatis-plus-bom</artifactId>
@@ -188,7 +181,6 @@
 
     <modules>
         <module>ruoyi-admin</module>
-        <module>ruoyi-common</module>
     </modules>
     <packaging>pom</packaging>
 

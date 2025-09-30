@@ -1,13 +1,12 @@
 package com.ruoyi.web.service;
 
-import com.ruoyi.common.constant.UserConstants;
-import com.ruoyi.common.core.domain.model.LoginUser;
-import com.ruoyi.common.exception.ServiceException;
-import com.ruoyi.common.exception.user.UserNotExistsException;
-import com.ruoyi.common.exception.user.UserPasswordNotMatchException;
-import com.ruoyi.common.utils.StringUtils;
+import com.ruoyi.web.constant.UserConstants;
+import com.ruoyi.web.domain.model.LoginUser;
+import com.ruoyi.web.exception.ServiceException;
+import com.ruoyi.web.exception.user.UserNotExistsException;
+import com.ruoyi.web.exception.user.UserPasswordNotMatchException;
+import com.ruoyi.web.utils.StringUtils;
 import com.ruoyi.web.security.context.AuthenticationContextHolder;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.BadCredentialsException;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;

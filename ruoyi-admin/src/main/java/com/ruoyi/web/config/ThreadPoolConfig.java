@@ -1,6 +1,6 @@
 package com.ruoyi.web.config;
 
-import com.ruoyi.common.utils.Threads;
+import com.ruoyi.web.utils.Threads;
 import org.apache.commons.lang3.concurrent.BasicThreadFactory;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;

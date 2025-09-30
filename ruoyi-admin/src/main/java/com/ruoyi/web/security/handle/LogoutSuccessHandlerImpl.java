@@ -1,11 +1,11 @@
 package com.ruoyi.web.security.handle;
 
 import com.alibaba.fastjson2.JSON;
-import com.ruoyi.common.core.domain.AjaxResult;
-import com.ruoyi.common.core.domain.model.LoginUser;
-import com.ruoyi.common.utils.MessageUtils;
-import com.ruoyi.common.utils.ServletUtils;
-import com.ruoyi.common.utils.StringUtils;
+import com.ruoyi.web.domain.AjaxResult;
+import com.ruoyi.web.domain.model.LoginUser;
+import com.ruoyi.web.utils.MessageUtils;
+import com.ruoyi.web.utils.ServletUtils;
+import com.ruoyi.web.utils.StringUtils;
 import com.ruoyi.web.service.TokenService;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.core.Authentication;

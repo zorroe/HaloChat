@@ -1,10 +1,10 @@
 package com.ruoyi.web.service;
 
 import cn.hutool.core.text.CharSequenceUtil;
-import com.ruoyi.common.constant.UserConstants;
-import com.ruoyi.common.core.domain.entity.SysUser;
-import com.ruoyi.common.core.domain.model.RegisterBody;
-import com.ruoyi.common.utils.SecurityUtils;
+import com.ruoyi.web.constant.UserConstants;
+import com.ruoyi.web.domain.entity.SysUser;
+import com.ruoyi.web.domain.model.RegisterBody;
+import com.ruoyi.web.utils.SecurityUtils;
 import org.springframework.stereotype.Component;
 
 import javax.annotation.Resource;

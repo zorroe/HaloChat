@@ -1,10 +1,10 @@
 package com.ruoyi.web.security.handle;
 
 import com.alibaba.fastjson2.JSON;
-import com.ruoyi.common.constant.HttpStatus;
-import com.ruoyi.common.core.domain.AjaxResult;
-import com.ruoyi.common.utils.ServletUtils;
-import com.ruoyi.common.utils.StringUtils;
+import com.ruoyi.web.constant.HttpStatus;
+import com.ruoyi.web.domain.AjaxResult;
+import com.ruoyi.web.utils.ServletUtils;
+import com.ruoyi.web.utils.StringUtils;
 import org.springframework.security.core.AuthenticationException;
 import org.springframework.security.web.AuthenticationEntryPoint;
 import org.springframework.stereotype.Component;

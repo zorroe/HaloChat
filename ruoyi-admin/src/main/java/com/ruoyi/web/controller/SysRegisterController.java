@@ -1,9 +1,8 @@
 package com.ruoyi.web.controller;
 
 import cn.hutool.core.text.CharSequenceUtil;
-import com.ruoyi.common.core.controller.BaseController;
-import com.ruoyi.common.core.domain.AjaxResult;
-import com.ruoyi.common.core.domain.model.RegisterBody;
+import com.ruoyi.web.domain.AjaxResult;
+import com.ruoyi.web.domain.model.RegisterBody;
 import com.ruoyi.web.service.SysRegisterService;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;

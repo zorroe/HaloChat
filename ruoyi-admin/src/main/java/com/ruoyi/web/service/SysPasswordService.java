@@ -1,8 +1,8 @@
 package com.ruoyi.web.service;
 
-import com.ruoyi.common.core.domain.entity.SysUser;
-import com.ruoyi.common.exception.user.UserPasswordNotMatchException;
-import com.ruoyi.common.utils.SecurityUtils;
+import com.ruoyi.web.domain.entity.SysUser;
+import com.ruoyi.web.exception.user.UserPasswordNotMatchException;
+import com.ruoyi.web.utils.SecurityUtils;
 import com.ruoyi.web.security.context.AuthenticationContextHolder;
 import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Component;

@@ -1,12 +1,10 @@
 package com.ruoyi.web.exception;
 
-import com.ruoyi.common.constant.HttpStatus;
-import com.ruoyi.common.core.domain.AjaxResult;
-import com.ruoyi.common.core.text.Convert;
-import com.ruoyi.common.exception.DemoModeException;
-import com.ruoyi.common.exception.ServiceException;
-import com.ruoyi.common.utils.StringUtils;
-import com.ruoyi.common.utils.html.EscapeUtil;
+import com.ruoyi.web.constant.HttpStatus;
+import com.ruoyi.web.domain.AjaxResult;
+import com.ruoyi.web.core.text.Convert;
+import com.ruoyi.web.utils.StringUtils;
+import com.ruoyi.web.utils.html.EscapeUtil;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.security.access.AccessDeniedException;
