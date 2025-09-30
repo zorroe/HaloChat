@@ -1,5 +1,6 @@
 package com.ruoyi.web.service.impl;
 
+import cn.hutool.core.lang.UUID;
 import cn.hutool.http.HttpStatus;
 import com.ruoyi.common.config.MinioConfig;
 import com.ruoyi.common.constant.FileConstants;
@@ -16,6 +17,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.util.Arrays;
+import java.util.Objects;
 
 import static com.ruoyi.common.utils.file.MimeTypeUtils.getExtension;
 
@@ -44,13 +46,10 @@ public class FileServiceImpl implements IFileService {
         try {
             // 验证文件
             validateAvatarFile(file);
-
             // 构建存储对象名称 (例如: avatar/2025/09/29/user123_avatar.jpg)
             String objectName = buildAvatarObjectName(file, userId);
-
             // 上传到MinIO
             String avatarUrl = minioUtil.uploadFile(file, objectName);
-
             return avatarUrl;
         } catch (Exception e) {
             throw new FileException("upload.error", new Object[]{});
@@ -97,9 +96,9 @@ public class FileServiceImpl implements IFileService {
      * @return 对象名称
      */
     private String buildAvatarObjectName(MultipartFile file, String userId) {
-        String extension = getExtension(file.getOriginalFilename());
+        String extension = getExtension(Objects.requireNonNull(file.getContentType()));
         String datePath = DateUtils.datePath(); // 格式: 2025/09/29
-        String fileName = "user" + userId + "_avatar." + extension;
+        String fileName = UUID.fastUUID() + "." + extension;
 
         return FileConstants.AVATAR_PATH_PREFIX + datePath + "/" + fileName;
     }
