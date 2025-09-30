@@ -50,6 +50,8 @@ public class SysUserServiceImpl extends ServiceImpl<SysUserMapper, SysUser> impl
         if (sysUser.getAvatar() != null) {
             user.setAvatar(sysUser.getAvatar());
         }
+        loginUser.setUser(user);
+        tokenService.setLoginUser(loginUser);
         return updateById(user);
     }
 }

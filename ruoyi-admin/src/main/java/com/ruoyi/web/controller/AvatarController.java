@@ -91,46 +91,4 @@ public class AvatarController
             return AjaxResult.error("获取头像失败: " + e.getMessage());
         }
     }
-
-    /**
-     * 删除用户头像
-     */
-    @DeleteMapping("/delete")
-    public AjaxResult deleteAvatar(HttpServletRequest request)
-    {
-        try
-        {
-            // 获取当前用户
-            SysUser currentUser = sysUserService.getCurrentUser(request);
-            if (currentUser == null)
-            {
-                return AjaxResult.error("用户未登录");
-            }
-
-            // 如果用户当前有头像，则删除
-            if (currentUser.getAvatar() != null && !currentUser.getAvatar().isEmpty())
-            {
-                fileService.deleteAvatar(currentUser.getAvatar());
-            }
-
-            // 将用户头像设置为空
-            SysUser updateUser = new SysUser();
-            updateUser.setUserId(currentUser.getUserId());
-            updateUser.setAvatar(""); // 设置为空字符串
-            
-            boolean result = sysUserService.updateUser(updateUser, request);
-            if (result)
-            {
-                return AjaxResult.success("头像删除成功");
-            }
-            else
-            {
-                return AjaxResult.error("更新用户信息失败");
-            }
-        }
-        catch (Exception e)
-        {
-            return AjaxResult.error("删除头像失败: " + e.getMessage());
-        }
-    }
 }
