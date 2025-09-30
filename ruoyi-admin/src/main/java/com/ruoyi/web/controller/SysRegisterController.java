@@ -22,6 +22,9 @@ public class SysRegisterController extends BaseController
     @Resource
     private SysRegisterService registerService;
 
+    /**
+     * 注册
+     */
     @PostMapping("/register")
     public AjaxResult register(@RequestBody RegisterBody user)
     {
