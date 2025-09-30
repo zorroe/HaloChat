@@ -8,3 +8,8 @@ spring:
 
 mybatis-plus:
     mapper-locations: classpath*:mappers/**/*.xml # 配置mapper文件位置
+
+
+admin: Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJhZG1pbiIsImxvZ2luX3VzZXJfa2V5IjoiYjc4ZjgyZGQtMTI2MS00NTdkLWJjMzMtOTFjZTc3MTkzYjJmIn0.5nj9rnjV-6WfsY7MloIM2_FvvSl3R_MOrqV_4kz06Pi1_W00xY2hKT3AjFwxtTtamqqC-ywK2uEpC4SJ9b-ayA
+
+ry: Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJyeSIsImxvZ2luX3VzZXJfa2V5IjoiMmIxOTFhMTQtYTBjMS00MjBkLThkM2EtZjc1NGFhZmE3Njg2In0.xg72GW_CjB2fpxHMlCwGIxPpWaS-_tq05gN_tjohXuJC_JWudoRiHBgWBYWxzHfrbjevaKZi36bcKgVorkRsPg

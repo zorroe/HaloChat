@@ -32,17 +32,17 @@ public class SysFriendRelation implements Serializable {
      * 关系记录ID
      */
     @TableId(value = "id", type = IdType.AUTO)
-    private Long id;
+    private String id;
 
     /**
      * 当前用户ID（关联user.id）
      */
-    private Long userId;
+    private String userId;
 
     /**
      * 好友用户ID（关联user.id）
      */
-    private Long friendUserId;
+    private String friendUserId;
 
     /**
      * 当前用户对好友的备注（如“大学同学”）
