@@ -122,4 +122,6 @@ minio:
   # 私有密钥
   secretKey: hjHwbk5mEwONjuZ6LczPCW6Wiq4y5Ma0rs0Yhp8z
   # 存储桶名称
-  bucketName: chat-avatar
+  bucketName: chat
+  # 临时文件url生效时间
+  tempExpireTime: 600

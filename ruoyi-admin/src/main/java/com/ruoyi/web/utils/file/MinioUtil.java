@@ -6,11 +6,11 @@ import io.minio.*;
 import io.minio.messages.Bucket;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.springframework.web.multipart.MultipartFile;
 
 import javax.annotation.PostConstruct;
+import javax.annotation.Resource;
 import java.io.InputStream;
 import java.util.List;
 
@@ -24,7 +24,7 @@ public class MinioUtil
 {
     private static final Logger log = LoggerFactory.getLogger(MinioUtil.class);
 
-    @Autowired
+    @Resource
     private MinioConfig minioConfig;
 
     private MinioClient minioClient;
@@ -188,13 +188,7 @@ public class MinioUtil
     public String generateFileUrl(String objectName)
     {
         // 构建文件访问URL
-        StringBuilder url = new StringBuilder();
-        url.append(minioConfig.getEndpoint());
-        url.append("/");
-        url.append(minioConfig.getBucketName());
-        url.append("/");
-        url.append(objectName);
-        return url.toString();
+        return objectName;
     }
 
     /**

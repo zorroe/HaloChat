@@ -10,10 +10,10 @@ import com.ruoyi.web.utils.StringUtils;
 import com.ruoyi.web.utils.file.FileValidationUtils;
 import com.ruoyi.web.utils.file.MinioUtil;
 import com.ruoyi.web.service.IFileService;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
+import javax.annotation.Resource;
 import java.util.Objects;
 
 import static com.ruoyi.web.utils.file.MimeTypeUtils.getExtension;
@@ -25,10 +25,10 @@ import static com.ruoyi.web.utils.file.MimeTypeUtils.getExtension;
  */
 @Service
 public class FileServiceImpl implements IFileService {
-    @Autowired
+    @Resource
     private MinioUtil minioUtil;
 
-    @Autowired
+    @Resource
     private MinioConfig minioConfig;
 
     /**

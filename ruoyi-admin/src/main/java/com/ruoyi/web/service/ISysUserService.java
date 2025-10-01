@@ -20,4 +20,13 @@ public interface ISysUserService extends IService<SysUser> {
     SysUser getCurrentUser(HttpServletRequest request);
 
     boolean updateUser(SysUser sysUser, HttpServletRequest request);
+    
+    /**
+     * 获取用户头像临时访问URL
+     * 
+     * @param avatarUrl 用户头像URL
+     * @param expires 过期时间（秒）
+     * @return 临时访问URL
+     */
+    String getUserAvatarTempUrl(String avatarUrl, int expires);
 }
