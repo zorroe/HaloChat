@@ -8,7 +8,9 @@ import com.ruoyi.web.domain.AjaxResult;
 import com.ruoyi.web.domain.entity.SysFriendApply;
 import com.ruoyi.web.domain.entity.SysFriendRelation;
 import com.ruoyi.web.domain.entity.SysUser;
+import com.ruoyi.web.enums.FriendApplyStatus;
 import com.ruoyi.web.enums.FriendErrorCode;
+import com.ruoyi.web.enums.FriendIsBlackCode;
 import com.ruoyi.web.mapper.SysFriendApplyMapper;
 import com.ruoyi.web.mapper.SysFriendRelationMapper;
 import com.ruoyi.web.mapper.SysUserMapper;
@@ -97,7 +99,7 @@ public class SysFriendApplyServiceImpl extends ServiceImpl<SysFriendApplyMapper,
                 LambdaQueryWrapper<SysFriendRelation> blockWrapper = new LambdaQueryWrapper<>();
                 blockWrapper.eq(SysFriendRelation::getUserId, toUser.getUserId())
                         .eq(SysFriendRelation::getFriendUserId, fromUserId)
-                        .eq(SysFriendRelation::getIsBlack, (byte) 1);
+                        .eq(SysFriendRelation::getIsBlack, FriendIsBlackCode.IS_BLACK.getCode());
                 if (friendRelationMapper.selectCount(blockWrapper) > 0) {
                     return AjaxResult.error(FriendErrorCode.FRIEND_REQUEST_SELF_BLOCKED.getCode(),
                             FriendErrorCode.FRIEND_REQUEST_SELF_BLOCKED.getMessage());
@@ -108,7 +110,7 @@ public class SysFriendApplyServiceImpl extends ServiceImpl<SysFriendApplyMapper,
                 friendApply.setFromUserId(fromUser.getUserId());
                 friendApply.setToUserId(toUser.getUserId());
                 friendApply.setApplyMsg(applyMsg);
-                friendApply.setStatus((byte) 0); // 待处理
+                friendApply.setStatus(FriendApplyStatus.PENDING.getCode()); // 待处理
                 friendApply.setCreateTime(LocalDateTimeUtil.now());
 
                 boolean result = this.save(friendApply);
@@ -142,9 +144,9 @@ public class SysFriendApplyServiceImpl extends ServiceImpl<SysFriendApplyMapper,
      */
     @Override
     @Transactional
-    public AjaxResult handleFriendApply(String applyId, Byte status, String currentUserId) {
+    public AjaxResult handleFriendApply(String applyId, String status, String currentUserId) {
         // 验证参数
-        if (!status.equals((byte) 1) && !status.equals((byte) 2)) {
+        if (!status.equals(FriendApplyStatus.AGREE.getCode()) && !status.equals(FriendApplyStatus.REFUSE.getCode())) {
             return AjaxResult.error("处理状态不正确，1-同意，2-拒绝");
         }
 
@@ -156,7 +158,7 @@ public class SysFriendApplyServiceImpl extends ServiceImpl<SysFriendApplyMapper,
         }
 
         // 检查申请是否已经处理过
-        if (friendApply.getStatus() != 0) {
+        if (!friendApply.getStatus().equals(FriendApplyStatus.PENDING.getCode())) {
             return AjaxResult.error(FriendErrorCode.FRIEND_REQUEST_ALREADY_PROCESSED.getCode(),
                     FriendErrorCode.FRIEND_REQUEST_ALREADY_PROCESSED.getMessage());
         }
@@ -176,7 +178,7 @@ public class SysFriendApplyServiceImpl extends ServiceImpl<SysFriendApplyMapper,
                 // 更新申请状态
                 LambdaUpdateWrapper<SysFriendApply> updateWrapper = new LambdaUpdateWrapper<>();
                 updateWrapper.eq(SysFriendApply::getId, applyId)
-                        .eq(SysFriendApply::getStatus, (byte) 0) // 确保之前状态为待处理
+                        .eq(SysFriendApply::getStatus, FriendApplyStatus.PENDING.getCode()) // 确保之前状态为待处理
                         .set(SysFriendApply::getStatus, status)
                         .set(SysFriendApply::getHandleTime, LocalDateTimeUtil.now());
                 boolean updateResult = this.update(updateWrapper);
@@ -186,7 +188,7 @@ public class SysFriendApplyServiceImpl extends ServiceImpl<SysFriendApplyMapper,
                 }
 
                 // 如果是同意申请，则创建双向好友关系
-                if (status == 1) {
+                if (status.equals(FriendApplyStatus.AGREE.getCode())) {
                     // 检查是否已经是好友
                     if (!friendRelationService.isFriend(friendApply.getFromUserId(), friendApply.getToUserId())) {
                         // 创建好友关系（A->B）
@@ -195,7 +197,7 @@ public class SysFriendApplyServiceImpl extends ServiceImpl<SysFriendApplyMapper,
                         relation1.setUserId(friendApply.getFromUserId());
                         relation1.setFriendUserId(friendApply.getToUserId());
                         relation1.setRemark(toUser.getNickName()); // 初始备注为空
-                        relation1.setIsBlack((byte) 0); // 正常状态
+                        relation1.setIsBlack(FriendIsBlackCode.NOT_BLACK.getCode()); // 正常状态
                         relation1.setCreateTime(LocalDateTimeUtil.now());
                         relation1.setUpdateTime(LocalDateTimeUtil.now());
                         friendRelationMapper.insert(relation1);
@@ -206,14 +208,14 @@ public class SysFriendApplyServiceImpl extends ServiceImpl<SysFriendApplyMapper,
                         relation2.setUserId(friendApply.getToUserId());
                         relation2.setFriendUserId(friendApply.getFromUserId());
                         relation2.setRemark(fromUser.getNickName()); // 初始备注为空
-                        relation2.setIsBlack((byte) 0); // 正常状态
+                        relation2.setIsBlack(FriendIsBlackCode.NOT_BLACK.getCode()); // 正常状态
                         relation2.setCreateTime(LocalDateTimeUtil.now());
                         relation2.setUpdateTime(LocalDateTimeUtil.now());
                         friendRelationMapper.insert(relation2);
                     }
                 }
 
-                String message = status == 1 ? "已同意好友申请" : "已拒绝好友申请";
+                String message = status.equals(FriendApplyStatus.AGREE.getCode()) ? "已同意好友申请" : "已拒绝好友申请";
                 return AjaxResult.success(message);
             } else {
                 // 获取锁失败
@@ -260,7 +262,7 @@ public class SysFriendApplyServiceImpl extends ServiceImpl<SysFriendApplyMapper,
         LambdaQueryWrapper<SysFriendApply> queryWrapper = new LambdaQueryWrapper<>();
         queryWrapper.eq(SysFriendApply::getFromUserId, fromUserId)
                 .eq(SysFriendApply::getToUserId, toUserId)
-                .in(SysFriendApply::getStatus, (byte) 0); // 只检查未处理的申请
+                .in(SysFriendApply::getStatus, FriendApplyStatus.PENDING.getCode()); // 只检查未处理的申请
         return this.count(queryWrapper) > 0;
     }
 }

@@ -9,6 +9,7 @@ import com.ruoyi.web.domain.AjaxResult;
 import com.ruoyi.web.domain.entity.SysFriendRelation;
 import com.ruoyi.web.domain.entity.SysUser;
 import com.ruoyi.web.enums.FriendErrorCode;
+import com.ruoyi.web.enums.FriendIsBlackCode;
 import com.ruoyi.web.mapper.SysFriendRelationMapper;
 import com.ruoyi.web.mapper.SysUserMapper;
 import com.ruoyi.web.service.ISysFriendRelationService;
@@ -49,7 +50,7 @@ public class SysFriendRelationServiceImpl extends ServiceImpl<SysFriendRelationM
         // 构造查询条件
         LambdaQueryWrapper<SysFriendRelation> queryWrapper = new LambdaQueryWrapper<>();
         queryWrapper.eq(SysFriendRelation::getUserId, userId)
-                .eq(SysFriendRelation::getIsBlack, (byte) 0) // 只查询非拉黑的好友
+                .eq(SysFriendRelation::getIsBlack, FriendIsBlackCode.NOT_BLACK.getCode()) // 只查询非拉黑的好友
                 .orderByDesc(SysFriendRelation::getUpdateTime); // 按更新时间倒序
 
         // 执行分页查询
@@ -118,9 +119,9 @@ public class SysFriendRelationServiceImpl extends ServiceImpl<SysFriendRelationM
      */
     @Override
     @Transactional
-    public AjaxResult updateFriendBlackStatus(String userId, String friendUserId, Byte isBlack) {
+    public AjaxResult updateFriendBlackStatus(String userId, String friendUserId, String isBlack) {
         // 验证参数
-        if (isBlack != 0 && isBlack != 1) {
+        if (!FriendIsBlackCode.IS_BLACK.getCode().equals(isBlack) && !FriendIsBlackCode.NOT_BLACK.getCode().equals(isBlack)) {
             return AjaxResult.error("拉黑状态参数错误，0-取消拉黑，1-拉黑");
         }
 
@@ -132,7 +133,7 @@ public class SysFriendRelationServiceImpl extends ServiceImpl<SysFriendRelationM
 
         boolean result = this.update(updateWrapper);
         if (result) {
-            String message = isBlack == 1 ? "已拉黑该好友" : "已取消拉黑该好友";
+            String message = FriendIsBlackCode.IS_BLACK.getCode().equals(isBlack) ? "已拉黑该好友" : "已取消拉黑该好友";
             return AjaxResult.success(message);
         } else {
             return AjaxResult.error("更新拉黑状态失败");
@@ -151,7 +152,7 @@ public class SysFriendRelationServiceImpl extends ServiceImpl<SysFriendRelationM
         LambdaQueryWrapper<SysFriendRelation> queryWrapper = new LambdaQueryWrapper<>();
         queryWrapper.eq(SysFriendRelation::getUserId, userId)
                 .eq(SysFriendRelation::getFriendUserId, friendUserId)
-                .eq(SysFriendRelation::getIsBlack, (byte) 0); // 只检查非拉黑状态的好友
+                .eq(SysFriendRelation::getIsBlack, FriendIsBlackCode.NOT_BLACK.getCode()); // 只检查非拉黑状态的好友
         return this.count(queryWrapper) > 0;
     }
 

@@ -52,7 +52,7 @@ public class SysFriendApplyController {
      */
     @PutMapping("/handle")
     public AjaxResult handleFriendApply(@RequestParam String applyId,
-                                        @RequestParam Byte status,
+                                        @RequestParam String status,
                                         HttpServletRequest request) {
         String currentUserId = getCurrentUserId(request);
         return friendApplyService.handleFriendApply(applyId, status, currentUserId);

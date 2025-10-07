@@ -31,7 +31,7 @@ public class SysFriendRelation implements Serializable {
     /**
      * 关系记录ID
      */
-    @TableId(value = "id", type = IdType.AUTO)
+    @TableId(value = "id", type = IdType.ASSIGN_UUID)
     private String id;
 
     /**
@@ -52,7 +52,7 @@ public class SysFriendRelation implements Serializable {
     /**
      * 是否拉黑：0-正常，1-已拉黑
      */
-    private Byte isBlack;
+    private String isBlack;
 
     /**
      * 成为好友的时间

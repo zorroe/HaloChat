@@ -34,7 +34,7 @@ public interface ISysFriendApplyService extends IService<SysFriendApply> {
      * @param currentUserId 当前用户ID（处理人）
      * @return AjaxResult
      */
-    AjaxResult handleFriendApply(String applyId, Byte status, String currentUserId);
+    AjaxResult handleFriendApply(String applyId, String status, String currentUserId);
 
     /**
      * 查询好友申请列表

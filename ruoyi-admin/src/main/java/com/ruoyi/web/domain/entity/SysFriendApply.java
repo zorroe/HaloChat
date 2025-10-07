@@ -1,6 +1,8 @@
 package com.ruoyi.web.domain.entity;
 
 import cn.hutool.core.date.DatePattern;
+import com.baomidou.mybatisplus.annotation.IdType;
+import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.TableName;
 import com.fasterxml.jackson.annotation.JsonFormat;
 import lombok.Data;
@@ -28,6 +30,7 @@ public class SysFriendApply implements Serializable {
     /**
      * 申请记录ID
      */
+    @TableId(value = "id", type = IdType.ASSIGN_UUID)
     private String id;
 
     /**
@@ -48,7 +51,7 @@ public class SysFriendApply implements Serializable {
     /**
      * 申请状态：0-待处理，1-已同意，2-已拒绝
      */
-    private Byte status;
+    private String status;
 
     /**
      * 处理时间（同意/拒绝时更新）

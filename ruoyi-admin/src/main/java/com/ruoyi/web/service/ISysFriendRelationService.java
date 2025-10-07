@@ -42,7 +42,7 @@ public interface ISysFriendRelationService extends IService<SysFriendRelation> {
      * @param isBlack 是否拉黑（1-拉黑，0-取消拉黑）
      * @return AjaxResult
      */
-    AjaxResult updateFriendBlackStatus(String userId, String friendUserId, Byte isBlack);
+    AjaxResult updateFriendBlackStatus(String userId, String friendUserId, String isBlack);
 
     /**
      * 检查用户是否为好友

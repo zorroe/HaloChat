@@ -1,15 +1,16 @@
 # 数据源配置
 spring:
     datasource:
-        url: jdbc:mysql://192.168.1.101:13306/chat?useUnicode=true&characterEncoding=utf8&zeroDateTimeBehavior=convertToNull&useSSL=true&serverTimezone=GMT%2B8
+#        url: jdbc:mysql://192.168.1.101:13306/chat?useUnicode=true&characterEncoding=utf8&zeroDateTimeBehavior=convertToNull&useSSL=true&serverTimezone=GMT%2B8
+        url: jdbc:postgresql://192.168.1.101:15432/chat
         username: chat
-        password: y8NAiM7m7chP43bb
-        driver-class-name: com.mysql.cj.jdbc.Driver
+        password: Bt8eNnbYeNJhDreB
+        driver-class-name: org.postgresql.Driver
 
 mybatis-plus:
     mapper-locations: classpath*:mappers/**/*.xml # 配置mapper文件位置
 
 
-admin: Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJhZG1pbiIsImxvZ2luX3VzZXJfa2V5IjoiYjc4ZjgyZGQtMTI2MS00NTdkLWJjMzMtOTFjZTc3MTkzYjJmIn0.5nj9rnjV-6WfsY7MloIM2_FvvSl3R_MOrqV_4kz06Pi1_W00xY2hKT3AjFwxtTtamqqC-ywK2uEpC4SJ9b-ayA
+lxxx: Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJseHh4IiwibG9naW5fdXNlcl9rZXkiOiI5ZTQyNDk3OC0zMWYwLTRkMzItYTA4NS1lZTE3MTQ0MzJjMjMifQ.EYbcpluJYTIXj5QeSwZ0tvm5t4I1Z8Gp5O-dVvuzUAUGHQjxNKPAe_CTb8i8Pyhu6Esf8f17rDLcq0pbDwr0Yw
 
-ry: Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJyeSIsImxvZ2luX3VzZXJfa2V5IjoiMmIxOTFhMTQtYTBjMS00MjBkLThkM2EtZjc1NGFhZmE3Njg2In0.xg72GW_CjB2fpxHMlCwGIxPpWaS-_tq05gN_tjohXuJC_JWudoRiHBgWBYWxzHfrbjevaKZi36bcKgVorkRsPg
+zorroe: Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJ6b3Jyb2UiLCJsb2dpbl91c2VyX2tleSI6IjA1MjA1ZTUwLTJjNjYtNGYzMC1hZmU2LThkYjBhYzkzNWEwYSJ9.KdQ1-capyiOlcdEgi1jgVE68ISbpAdPCGljYQE0Kc54MyN3uHPAH-wlLxc3cqYknObdcHyJ5VbrGRHxz-qURng

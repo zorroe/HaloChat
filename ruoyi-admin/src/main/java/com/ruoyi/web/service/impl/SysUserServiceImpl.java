@@ -69,9 +69,9 @@ public class SysUserServiceImpl extends ServiceImpl<SysUserMapper, SysUser> impl
         LoginUser loginUser = tokenService.getLoginUser(request);
         SysUser user = loginUser.getUser();
         user.setNickName(sysUser.getNickName());
-        user.setPhonenumber(sysUser.getPhonenumber());
+        user.setPhone(sysUser.getPhone());
         user.setEmail(sysUser.getEmail());
-        user.setSex(sysUser.getSex());
+        user.setGender(sysUser.getGender());
         // 更新头像信息（如果提供了新头像）
         if (sysUser.getAvatar() != null) {
             user.setAvatar(sysUser.getAvatar());

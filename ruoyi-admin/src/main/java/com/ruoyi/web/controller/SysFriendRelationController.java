@@ -67,7 +67,7 @@ public class SysFriendRelationController {
      */
     @PutMapping("/black")
     public AjaxResult updateFriendBlackStatus(@RequestParam String friendUserId,
-                                              @RequestParam Byte isBlack,
+                                              @RequestParam String isBlack,
                                               HttpServletRequest request) {
         String currentUserId = getCurrentUserId(request);
         return friendRelationService.updateFriendBlackStatus(currentUserId, friendUserId, isBlack);
