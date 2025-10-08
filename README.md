@@ -1,95 +1,390 @@
-<p align="center">
-	<img alt="logo" src="https://oscimg.oschina.net/oscnet/up-d3d0a9303e11d522a06cd263f3079027715.png">
-</p>
-<h1 align="center" style="margin: 30px 0 30px; font-weight: bold;">RuoYi v3.9.0</h1>
-<h4 align="center">基于SpringBoot+Vue前后端分离的Java快速开发框架</h4>
-<p align="center">
-	<a href="https://gitee.com/y_project/RuoYi-Vue/stargazers"><img src="https://gitee.com/y_project/RuoYi-Vue/badge/star.svg?theme=dark"></a>
-	<a href="https://gitee.com/y_project/RuoYi-Vue"><img src="https://img.shields.io/badge/RuoYi-v3.9.0-brightgreen.svg"></a>
-	<a href="https://gitee.com/y_project/RuoYi-Vue/blob/master/LICENSE"><img src="https://img.shields.io/github/license/mashape/apistatus.svg"></a>
-</p>
+# HaloChat
 
-## 平台简介
+HaloChat是一个现代化的实时聊天应用程序，采用前后端分离架构，后端使用Spring Boot框架，前端使用Vue.js框架。该应用提供用户认证、用户管理、头像管理等功能，支持实时通信和用户信息管理。
 
-若依是一套全部开源的快速开发平台，毫无保留给个人及企业免费使用。
+## 项目概述
 
-* 前端采用Vue、Element UI。
-* 后端采用Spring Boot、Spring Security、Redis & Jwt。
-* 权限认证使用Jwt，支持多终端认证系统。
-* 支持加载动态权限菜单，多方式轻松权限控制。
-* 高效率开发，使用代码生成器可以一键生成前后端代码。
-* 提供了技术栈（[Vue3](https://v3.cn.vuejs.org) [Element Plus](https://element-plus.org/zh-CN) [Vite](https://cn.vitejs.dev)）版本[RuoYi-Vue3](https://gitcode.com/yangzongzhuan/RuoYi-Vue3)，保持同步更新。
-* 提供了单应用版本[RuoYi-Vue-fast](https://gitcode.com/yangzongzhuan/RuoYi-Vue-fast)，Oracle版本[RuoYi-Vue-Oracle](https://gitcode.com/yangzongzhuan/RuoYi-Vue-Oracle)，保持同步更新。
-* 不分离版本，请移步[RuoYi](https://gitee.com/y_project/RuoYi)，微服务版本，请移步[RuoYi-Cloud](https://gitee.com/y_project/RuoYi-Cloud)
-* 阿里云折扣场：[点我进入](http://aly.ruoyi.vip)，腾讯云秒杀场：[点我进入](http://txy.ruoyi.vip)&nbsp;&nbsp;
+HaloChat 是一款基于 RuoYi 框架开发的 Spring Boot 应用程序，提供用户认证、用户管理、头像管理等功能。该系统采用现代化技术栈，前后端分离设计，为用户提供流畅的聊天体验。
 
-## 内置功能
+主要特点：
+- **后端 (HaloChat)**：使用 Spring Boot、Spring Security、Redis 和 JWT 认证
+- **前端 (HaloChatApp)**：使用 Vue 3、TypeScript 和 Vite 构建现代前端应用
+- **权限管理**：基于 JWT 的安全认证机制，支持多终端认证系统
+- **高效开发**：使用代码生成器可以一键生成前后端代码
 
-1.  用户管理：用户是系统操作者，该功能主要完成系统用户配置。
-2.  部门管理：配置系统组织机构（公司、部门、小组），树结构展现支持数据权限。
-3.  岗位管理：配置系统用户所属担任职务。
-4.  菜单管理：配置系统菜单，操作权限，按钮权限标识等。
-5.  角色管理：角色菜单权限分配、设置角色按机构进行数据范围权限划分。
-6.  字典管理：对系统中经常使用的一些较为固定的数据进行维护。
-7.  参数管理：对系统动态配置常用参数。
-8.  通知公告：系统通知公告信息发布维护。
-9.  操作日志：系统正常操作日志记录和查询；系统异常信息日志记录和查询。
-10. 登录日志：系统登录日志记录查询包含登录异常。
-11. 在线用户：当前系统中活跃用户状态监控。
-12. 定时任务：在线（添加、修改、删除)任务调度包含执行结果日志。
-13. 代码生成：前后端代码的生成（java、html、xml、sql）支持CRUD下载 。
-14. 系统接口：根据业务代码自动生成相关的api接口文档。
-15. 服务监控：监视当前系统CPU、内存、磁盘、堆栈等相关信息。
-16. 缓存监控：对系统的缓存信息查询，命令统计等。
-17. 在线构建器：拖动表单元素生成相应的HTML代码。
-18. 连接池监视：监视当前系统数据库连接池状态，可进行分析SQL找出系统性能瓶颈。
+## 技术栈
 
-## 在线体验
+### 后端技术栈 (HaloChat)
+- **核心框架**：Spring Boot 2.5.15
+- **安全框架**：Spring Security
+- **认证机制**：JWT (JSON Web Token)
+- **数据库**：PostgreSQL，使用 MyBatis Plus 作为 ORM 框架
+- **缓存**：Redis，使用 Redisson 实现分布式锁
+- **数据源**：阿里巴巴 Druid 连接池
+- **开发语言**：Java 8+
+- **构建工具**：Maven
+- **API 文档**：Swagger 3
+- **系统信息**：oshi-core 获取系统信息
+- **JSON 处理**：Fastjson2
 
-- admin/admin123  
-- 陆陆续续收到一些打赏，为了更好的体验已用于演示服务器升级。谢谢各位小伙伴。
+### 前端技术栈 (HaloChatApp)
+- **前端框架**：Vue 3，使用 Composition API
+- **编程语言**：TypeScript
+- **构建工具**：Vite
+- **HTTP 客户端**：Axios
+- **类型定义**：Node.js 类型定义
 
-演示地址：http://vue.ruoyi.vip  
-文档地址：http://doc.ruoyi.vip
+## 功能特性
 
-## 演示图
+- 用户认证系统（登录/注册）
+- 实时聊天功能
+- 用户资料管理
+- 头像上传与管理
+- 基于 JWT 的安全认证
+- 角色权限控制
+- 响应式设计，支持多设备访问
+- 完善的 API 文档
 
-<table>
-    <tr>
-        <td><img src="https://oscimg.oschina.net/oscnet/cd1f90be5f2684f4560c9519c0f2a232ee8.jpg"/></td>
-        <td><img src="https://oscimg.oschina.net/oscnet/1cbcf0e6f257c7d3a063c0e3f2ff989e4b3.jpg"/></td>
-    </tr>
-    <tr>
-        <td><img src="https://oscimg.oschina.net/oscnet/up-8074972883b5ba0622e13246738ebba237a.png"/></td>
-        <td><img src="https://oscimg.oschina.net/oscnet/up-9f88719cdfca9af2e58b352a20e23d43b12.png"/></td>
-    </tr>
-    <tr>
-        <td><img src="https://oscimg.oschina.net/oscnet/up-39bf2584ec3a529b0d5a3b70d15c9b37646.png"/></td>
-        <td><img src="https://oscimg.oschina.net/oscnet/up-936ec82d1f4872e1bc980927654b6007307.png"/></td>
-    </tr>
-	<tr>
-        <td><img src="https://oscimg.oschina.net/oscnet/up-b2d62ceb95d2dd9b3fbe157bb70d26001e9.png"/></td>
-        <td><img src="https://oscimg.oschina.net/oscnet/up-d67451d308b7a79ad6819723396f7c3d77a.png"/></td>
-    </tr>	 
-    <tr>
-        <td><img src="https://oscimg.oschina.net/oscnet/5e8c387724954459291aafd5eb52b456f53.jpg"/></td>
-        <td><img src="https://oscimg.oschina.net/oscnet/644e78da53c2e92a95dfda4f76e6d117c4b.jpg"/></td>
-    </tr>
-	<tr>
-        <td><img src="https://oscimg.oschina.net/oscnet/up-8370a0d02977eebf6dbf854c8450293c937.png"/></td>
-        <td><img src="https://oscimg.oschina.net/oscnet/up-49003ed83f60f633e7153609a53a2b644f7.png"/></td>
-    </tr>
-	<tr>
-        <td><img src="https://oscimg.oschina.net/oscnet/up-d4fe726319ece268d4746602c39cffc0621.png"/></td>
-        <td><img src="https://oscimg.oschina.net/oscnet/up-c195234bbcd30be6927f037a6755e6ab69c.png"/></td>
-    </tr>
-    <tr>
-        <td><img src="https://oscimg.oschina.net/oscnet/b6115bc8c31de52951982e509930b20684a.jpg"/></td>
-        <td><img src="https://oscimg.oschina.net/oscnet/up-5e4daac0bb59612c5038448acbcef235e3a.png"/></td>
-    </tr>
-</table>
+## 安装指南
 
+### 系统要求
 
-## 若依前后端分离交流群
+- **后端**：
+  - Java 8 或更高版本
+  - Maven 3.6+
+  - PostgreSQL 数据库
+  - Redis 服务器
 
-QQ群： [![加入QQ群](https://img.shields.io/badge/已满-937441-blue.svg)](https://jq.qq.com/?_wv=1027&k=5bVB1og) [![加入QQ群](https://img.shields.io/badge/已满-887144332-blue.svg)](https://jq.qq.com/?_wv=1027&k=5eiA4DH) [![加入QQ群](https://img.shields.io/badge/已满-180251782-blue.svg)](https://jq.qq.com/?_wv=1027&k=5AxMKlC) [![加入QQ群](https://img.shields.io/badge/已满-104180207-blue.svg)](https://jq.qq.com/?_wv=1027&k=51G72yr) [![加入QQ群](https://img.shields.io/badge/已满-186866453-blue.svg)](https://jq.qq.com/?_wv=1027&k=VvjN2nvu) [![加入QQ群](https://img.shields.io/badge/已满-201396349-blue.svg)](https://jq.qq.com/?_wv=1027&k=5vYAqA05) [![加入QQ群](https://img.shields.io/badge/已满-101456076-blue.svg)](https://jq.qq.com/?_wv=1027&k=kOIINEb5) [![加入QQ群](https://img.shields.io/badge/已满-101539465-blue.svg)](https://jq.qq.com/?_wv=1027&k=UKtX5jhs) [![加入QQ群](https://img.shields.io/badge/已满-264312783-blue.svg)](https://jq.qq.com/?_wv=1027&k=EI9an8lJ) [![加入QQ群](https://img.shields.io/badge/已满-167385320-blue.svg)](https://jq.qq.com/?_wv=1027&k=SWCtLnMz) [![加入QQ群](https://img.shields.io/badge/已满-104748341-blue.svg)](https://jq.qq.com/?_wv=1027&k=96Dkdq0k) [![加入QQ群](https://img.shields.io/badge/已满-160110482-blue.svg)](https://jq.qq.com/?_wv=1027&k=0fsNiYZt) [![加入QQ群](https://img.shields.io/badge/已满-170801498-blue.svg)](https://jq.qq.com/?_wv=1027&k=7xw4xUG1) [![加入QQ群](https://img.shields.io/badge/已满-108482800-blue.svg)](https://jq.qq.com/?_wv=1027&k=eCx8eyoJ) [![加入QQ群](https://img.shields.io/badge/已满-101046199-blue.svg)](https://jq.qq.com/?_wv=1027&k=SpyH2875) [![加入QQ群](https://img.shields.io/badge/已满-136919097-blue.svg)](https://jq.qq.com/?_wv=1027&k=tKEt51dz) [![加入QQ群](https://img.shields.io/badge/已满-143961921-blue.svg)](http://qm.qq.com/cgi-bin/qm/qr?_wv=1027&k=0vBbSb0ztbBgVtn3kJS-Q4HUNYwip89G&authKey=8irq5PhutrZmWIvsUsklBxhj57l%2F1nOZqjzigkXZVoZE451GG4JHPOqW7AW6cf0T&noverify=0&group_code=143961921) [![加入QQ群](https://img.shields.io/badge/已满-174951577-blue.svg)](http://qm.qq.com/cgi-bin/qm/qr?_wv=1027&k=ZFAPAbp09S2ltvwrJzp7wGlbopsc0rwi&authKey=HB2cxpxP2yspk%2Bo3WKTBfktRCccVkU26cgi5B16u0KcAYrVu7sBaE7XSEqmMdFQp&noverify=0&group_code=174951577) [![加入QQ群](https://img.shields.io/badge/已满-161281055-blue.svg)](http://qm.qq.com/cgi-bin/qm/qr?_wv=1027&k=Fn2aF5IHpwsy8j6VlalNJK6qbwFLFHat&authKey=uyIT%2B97x2AXj3odyXpsSpVaPMC%2Bidw0LxG5MAtEqlrcBcWJUA%2FeS43rsF1Tg7IRJ&noverify=0&group_code=161281055) [![加入QQ群](https://img.shields.io/badge/已满-138988063-blue.svg)](http://qm.qq.com/cgi-bin/qm/qr?_wv=1027&k=XIzkm_mV2xTsUtFxo63bmicYoDBA6Ifm&authKey=dDW%2F4qsmw3x9govoZY9w%2FoWAoC4wbHqGal%2BbqLzoS6VBarU8EBptIgPKN%2FviyC8j&noverify=0&group_code=138988063) [![加入QQ群](https://img.shields.io/badge/已满-151450850-blue.svg)](http://qm.qq.com/cgi-bin/qm/qr?_wv=1027&k=DkugnCg68PevlycJSKSwjhFqfIgrWWwR&authKey=pR1Pa5lPIeGF%2FFtIk6d%2FGB5qFi0EdvyErtpQXULzo03zbhopBHLWcuqdpwY241R%2F&noverify=0&group_code=151450850) [![加入QQ群](https://img.shields.io/badge/已满-224622315-blue.svg)](http://qm.qq.com/cgi-bin/qm/qr?_wv=1027&k=F58bgRa-Dp-rsQJThiJqIYv8t4-lWfXh&authKey=UmUs4CVG5OPA1whvsa4uSespOvyd8%2FAr9olEGaWAfdLmfKQk%2FVBp2YU3u2xXXt76&noverify=0&group_code=224622315) [![加入QQ群](https://img.shields.io/badge/已满-287842588-blue.svg)](http://qm.qq.com/cgi-bin/qm/qr?_wv=1027&k=Nxb2EQ5qozWa218Wbs7zgBnjLSNk_tVT&authKey=obBKXj6SBKgrFTJZx0AqQnIYbNOvBB2kmgwWvGhzxR67RoRr84%2Bus5OadzMcdJl5&noverify=0&group_code=287842588) [![加入QQ群](https://img.shields.io/badge/已满-187944233-blue.svg)](http://qm.qq.com/cgi-bin/qm/qr?_wv=1027&k=numtK1M_I4eVd2Gvg8qtbuL8JgX42qNh&authKey=giV9XWMaFZTY%2FqPlmWbkB9g3fi0Ev5CwEtT9Tgei0oUlFFCQLDp4ozWRiVIzubIm&noverify=0&group_code=187944233) [![加入QQ群](https://img.shields.io/badge/已满-228578329-blue.svg)](http://qm.qq.com/cgi-bin/qm/qr?_wv=1027&k=G6r5KGCaa3pqdbUSXNIgYloyb8e0_L0D&authKey=4w8tF1eGW7%2FedWn%2FHAypQksdrML%2BDHolQSx7094Agm7Luakj9EbfPnSTxSi2T1LQ&noverify=0&group_code=228578329) [![加入QQ群](https://img.shields.io/badge/191164766-blue.svg)](http://qm.qq.com/cgi-bin/qm/qr?_wv=1027&k=GsOo-OLz53J8y_9TPoO6XXSGNRTgbFxA&authKey=R7Uy%2Feq%2BZsoKNqHvRKhiXpypW7DAogoWapOawUGHokJSBIBIre2%2FoiAZeZBSLuBc&noverify=0&group_code=191164766) 点击按钮入群。
+- **前端**：
+  - Node.js 16+ 或更高版本
+  - pnpm 包管理器
+
+### 后端安装 (HaloChat)
+
+1. 克隆项目仓库：
+   ```bash
+   git clone https://github.com/your-username/HaloChat.git
+   cd HaloChat
+   ```
+
+2. 配置数据库连接，在 `application.yml` 文件中修改：
+   ```yaml
+   spring:
+     datasource:
+       url: jdbc:postgresql://localhost:5432/halochat
+       username: your_db_username
+       password: your_db_password
+   ```
+
+3. 初始化数据库，运行 `sql` 目录下的 SQL 脚本
+
+4. 构建项目：
+   ```bash
+   mvn clean install
+   ```
+
+5. 启动应用程序：
+   ```bash
+   mvn spring-boot:run
+   ```
+   
+   或打包后运行 JAR 文件：
+   ```bash
+   mvn package
+   java -jar ruoyi-admin/target/ruoyi.jar
+   ```
+
+6. 后端服务器将在 `http://localhost:8080` 运行
+
+### 前端安装 (HaloChatApp)
+
+1. 进入前端目录：
+   ```bash
+   cd ../HaloChatApp
+   ```
+
+2. 安装依赖：
+   ```bash
+   pnpm install
+   ```
+
+3. 启动开发服务器：
+   ```bash
+   pnpm dev
+   ```
+
+4. 前端应用将在 `http://localhost:5173` 访问
+
+## API 文档
+
+后端提供全面的 REST API 接口用于用户管理和聊天功能：
+
+### 通用响应格式
+所有 API 接口返回统一格式的 JSON 数据：
+```json
+{
+  "code": 200,
+  "msg": "操作成功",
+  "data": {}
+}
+```
+
+| 字段 | 类型 | 说明 |
+|------|------|------|
+| code | Integer | 状态码，200 表示成功 |
+| msg | String | 响应消息 |
+| data | Object | 响应数据体（可能为 null 或对象） |
+
+### 1. 认证接口
+
+#### 1.1 用户登录
+- **请求方法**：`POST`
+- **URL 路径**：`/login`
+- **请求参数**：
+  - `username` (String, 必填): 用户名
+  - `password` (String, 必填): 密码
+- **示例请求**：
+  ```json
+  {
+    "username": "admin",
+    "password": "123456"
+  }
+  ```
+- **响应示例**：
+  ```json
+  {
+    "code": 200,
+    "msg": "操作成功",
+    "data": null,
+    "token": "eyJhbGciOiJIUzI1NiJ9..."
+  }
+  ```
+
+#### 1.2 用户注册
+- **请求方法**：`POST`
+- **URL 路径**：`/register`
+- **请求参数**：
+  - `username` (String, 必填): 用户名
+  - `password` (String, 必填): 密码
+  - `email` (String, 必填): 邮箱
+  - `nickName` (String, 可选): 昵称
+- **示例请求**：
+  ```json
+  {
+    "username": "newuser",
+    "password": "123456",
+    "email": "user@example.com",
+    "nickName": "新用户"
+  }
+  ```
+
+### 2. 用户管理接口
+
+#### 2.1 获取当前用户信息
+- **请求方法**：`GET`
+- **URL 路径**：`/user/getUser`
+- **认证要求**：需要有效的 token
+- **响应示例**：
+  ```json
+  {
+    "code": 200,
+    "msg": "操作成功",
+    "data": {
+      "userId": "1",
+      "username": "admin",
+      "nickName": "管理员",
+      "email": "admin@example.com",
+      "avatar": "https://example.com/avatar.jpg",
+      "createTime": "2023-01-01 12:00:00",
+      "updateTime": "2023-01-01 12:00:00",
+      "status": "0"
+    }
+  }
+  ```
+
+#### 2.2 更新用户信息
+- **请求方法**：`POST`
+- **URL 路径**：`/user/update`
+- **认证要求**：需要有效的 token
+- **请求参数**：
+  - `nickName` (String, 可选): 昵称
+  - `email` (String, 可选): 邮箱
+  - `avatar` (String, 可选): 头像URL
+- **示例请求**：
+  ```json
+  {
+    "nickName": "新昵称",
+    "email": "newemail@example.com",
+    "avatar": "https://example.com/newavatar.jpg"
+  }
+  ```
+
+### 3. 头像管理接口
+
+#### 3.1 上传头像
+- **请求方法**：`POST`
+- **URL 路径**：`/avatar/upload`
+- **认证要求**：需要有效的 token
+- **请求格式**：multipart/form-data
+- **请求参数**：
+  - `avatar` (File, 必填): 头像文件（图片格式）
+- **响应示例**：
+  ```json
+  {
+    "code": 200,
+    "msg": "头像上传成功",
+    "data": "https://example.com/uploads/avatar.jpg"
+  }
+  ```
+
+#### 3.2 获取当前用户头像
+- **请求方法**：`GET`
+- **URL 路径**：`/avatar/current`
+- **认证要求**：需要有效的 token
+- **响应示例**：
+  ```json
+  {
+    "code": 200,
+    "msg": "获取头像成功",
+    "data": "https://example.com/uploads/avatar.jpg"
+  }
+  ```
+
+### 认证机制
+本 API 采用基于 Token 的认证机制。用户登录成功后会收到一个 JWT 令牌，在后续请求的 HTTP 头部中需要包含：
+```
+Authorization: Bearer <token>
+```
+
+## 环境变量配置
+
+### 后端配置
+
+在 `application.yml` 文件中配置以下环境特定设置：
+
+```yaml
+spring:
+  datasource:
+    url: jdbc:postgresql://localhost:5432/halochat
+    username: ${DB_USERNAME:halochat}
+    password: ${DB_PASSWORD:halochat}
+  redis:
+    host: ${REDIS_HOST:localhost}
+    port: ${REDIS_PORT:6379}
+    password: ${REDIS_PASSWORD:}
+  servlet:
+    multipart:
+      max-file-size: 5MB
+      max-request-size: 10MB
+
+jwt:
+  secret: ${JWT_SECRET:defaultSecretKey}
+  expiration: 86400000 # 24小时
+```
+
+### 前端配置
+
+在前端目录中创建 `.env` 文件：
+
+```env
+VITE_API_BASE_URL=http://localhost:8080
+VITE_WS_URL=ws://localhost:8080/chat
+```
+
+## 开发脚本
+
+### 后端脚本
+
+- `mvn clean install` - 构建项目
+- `mvn spring-boot:run` - 在开发模式下运行应用
+- `mvn test` - 运行单元测试
+
+### 前端脚本
+
+- `pnpm dev` - 启动开发服务器
+- `pnpm build` - 构建生产版本
+- `pnpm preview` - 预览生产构建
+
+## 项目结构
+
+```
+HaloChat/
+├── ruoyi-admin/              # 后端 Spring Boot 应用
+│   ├── src/
+│   │   └── main/
+│   │       ├── java/         # Java 源代码
+│   │       └── resources/    # 配置文件
+│   └── pom.xml               # Maven 依赖配置
+├── HaloChatApp/              # 前端 Vue.js 应用
+│   ├── src/                  # 源代码
+│   ├── public/               # 静态资源
+│   ├── package.json          # Node.js 依赖配置
+│   └── vite.config.ts        # Vite 配置
+├── sql/                      # 数据库初始化脚本
+├── API文档.md                # API 文档
+└── README.md                 # 项目文档
+```
+
+## 贡献指南
+
+我们欢迎各种形式的贡献！以下是参与项目开发的方式：
+
+1. Fork 项目仓库
+2. 创建功能分支 (`git checkout -b feature/新功能`)
+3. 进行代码修改
+4. 提交修改 (`git commit -m '添加新功能'`)
+5. 推送到分支 (`git push origin feature/新功能`)
+6. 创建 Pull Request
+
+### 开发规范
+
+- 遵循现有的代码风格和命名规范
+- 为新功能和错误修复编写测试
+- 按需更新相关文档
+- 保持 Pull Request 专注于单一功能或修复
+- 提交 Pull Request 前确保所有测试通过
+
+### 本地开发设置
+
+1. 克隆两个仓库：
+   ```bash
+   git clone <后端仓库地址> HaloChat
+   git clone <前端仓库地址> HaloChatApp
+   ```
+
+2. 按照安装说明设置后端和前端环境
+
+3. 本地运行两个应用并测试集成
+
+### 代码审查流程
+
+1. 确保提交的代码符合编码标准
+2. 验证所有测试用例通过
+3. 添加适当的注释和文档
+4. 代码审查通过后合并到主分支
+
+## 许可证信息
+
+本项目采用 MIT 许可证。详情请参见 [LICENSE](LICENSE) 文件。
+
+Copyright (c) 2018 RuoYi
+
+特此免费授予任何获得本软件及相关文档文件（以下简称"软件"）副本的人无限制地处理本软件的权限，包括但不限于使用、复制、修改、合并、发布、分发、再许可和/或销售软件副本的权限，以及允许软件所有者提供此等服务的权限，但须符合以下条件：
+
+上述版权声明和本许可声明应包含在软件的所有副本或实质部分中。
+
+本软件按"原样"提供，不提供任何形式的明示或暗示担保，包括但不限于适销性、特定用途适用性和非侵权性的担保。在任何情况下，作者或版权持有人均不对因软件或软件的使用或其他交易而引起的任何索赔、损害或其他责任承担责任，无论是合同诉讼、侵权行为还是其他诉讼。
+
+后端组件基于 RuoYi 框架开发，该框架有其自身的许可条款。
+
+---
+
+## 支持
+
+如果您在使用过程中遇到问题或有关于项目的问题，请在 GitHub 仓库中提交 issue。
+
+## 致谢
+
+- 基于 RuoYi 框架进行快速开发
+- Vue.js 和 Spring Boot 提供了强大的框架支持
+- 开源社区提供的各类库和工具
