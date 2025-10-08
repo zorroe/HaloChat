@@ -17,6 +17,13 @@
 
     <dependencies>
 
+        <!-- Netty for WebSocket real-time messaging -->
+        <dependency>
+            <groupId>io.netty</groupId>
+            <artifactId>netty-all</artifactId>
+            <version>4.1.111.Final</version>
+        </dependency>
+
         <!-- swagger3-->
         <dependency>
             <groupId>io.springfox</groupId>

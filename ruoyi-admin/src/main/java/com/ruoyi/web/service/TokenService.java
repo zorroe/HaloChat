@@ -84,6 +84,32 @@ public class TokenService
     }
 
     /**
+     * 获取用户身份信息
+     *
+     * @return 用户信息
+     */
+    public LoginUser getLoginUser(String token)
+    {
+        // 获取请求携带的令牌
+        if (StringUtils.isNotEmpty(token))
+        {
+            try
+            {
+                Claims claims = parseToken(token);
+                // 解析对应的权限以及用户信息
+                String uuid = (String) claims.get(Constants.LOGIN_USER_KEY);
+                String userKey = getTokenKey(uuid);
+                return redisCache.getCacheObject(userKey);
+            }
+            catch (Exception e)
+            {
+                log.error("获取用户信息异常'{}'", e.getMessage());
+            }
+        }
+        return null;
+    }
+
+    /**
      * 设置用户身份信息
      */
     public void setLoginUser(LoginUser loginUser)
