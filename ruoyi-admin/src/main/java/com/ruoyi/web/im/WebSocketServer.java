@@ -12,9 +12,12 @@ import io.netty.handler.codec.http.HttpObjectAggregator;
 import io.netty.handler.codec.http.HttpServerCodec;
 import io.netty.handler.codec.http.websocketx.WebSocketServerProtocolHandler;
 import io.netty.handler.stream.ChunkedWriteHandler;
+import io.netty.handler.timeout.IdleStateHandler;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.SmartLifecycle;
 import org.springframework.stereotype.Component;
+
+import java.util.concurrent.TimeUnit;
 
 @Component
 public class WebSocketServer implements SmartLifecycle {
@@ -45,6 +48,7 @@ public class WebSocketServer implements SmartLifecycle {
                                     .addLast(new ChunkedWriteHandler())
                                     .addLast(new HttpObjectAggregator(65536))
                                     .addLast(new WebSocketServerProtocolHandler("/chat", null, true))
+                                    .addLast(new WebSocketIdleStateHandler(30, 0, 0, TimeUnit.MINUTES))
                                     .addLast(new WebSocketServerHandler());
                         }
                     });

@@ -1,10 +1,13 @@
 package com.ruoyi.web.im;
 
+import cn.hutool.core.date.DatePattern;
+import cn.hutool.core.date.DateUtil;
 import com.alibaba.fastjson2.JSON;
 import com.alibaba.fastjson2.JSONObject;
 import com.ruoyi.web.domain.entity.SysChatMessage;
 import com.ruoyi.web.domain.model.LoginUser;
 import com.ruoyi.web.enums.ChatMessageStatus;
+import com.ruoyi.web.enums.ChatMessageType;
 import com.ruoyi.web.service.ISysChatMessageService;
 import com.ruoyi.web.service.TokenService;
 import com.ruoyi.web.utils.SnowflakeIdWorker;
@@ -12,7 +15,6 @@ import com.ruoyi.web.utils.spring.SpringUtils;
 import io.netty.channel.Channel;
 import io.netty.channel.ChannelHandlerContext;
 import io.netty.channel.SimpleChannelInboundHandler;
-import io.netty.handler.codec.http.QueryStringDecoder;
 import io.netty.handler.codec.http.websocketx.TextWebSocketFrame;
 import io.netty.handler.codec.http.websocketx.WebSocketServerProtocolHandler;
 import io.netty.handler.timeout.IdleState;
@@ -20,10 +22,9 @@ import io.netty.handler.timeout.IdleStateEvent;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.data.redis.core.RedisTemplate;
 
-import java.net.URI;
 import java.time.LocalDateTime;
-import java.util.List;
-import java.util.Map;
+import java.util.Date;
+import java.util.HashMap;
 import java.util.Objects;
 
 @Slf4j
@@ -99,6 +100,17 @@ public class WebSocketServerHandler extends SimpleChannelInboundHandler<TextWebS
         String content = json.getString("content");
         String msgType = json.getString("msgType");
         log.info("收到消息：{}", json);
+
+        if (ChatMessageType.HEARTBEAT.getValue().equals(msgType)) {
+            log.info("收到心跳：{}", json);
+            Channel channel = ctx.channel();
+            HashMap<String, String> map = new HashMap<>();
+            map.put("timestamp", DateUtil.format(new Date(), DatePattern.NORM_DATETIME_PATTERN));
+            map.put("msgType", "heartbeat");
+            channel.writeAndFlush(new TextWebSocketFrame(JSON.toJSONString(map)));
+            return;
+        }
+
         if (currentUserId == null || toUserId == null || Objects.equals(currentUserId, toUserId)) {
             return;
         }
@@ -110,7 +122,7 @@ public class WebSocketServerHandler extends SimpleChannelInboundHandler<TextWebS
         entity.setFromUserId(currentUserId);
         entity.setToUserId(toUserId);
         entity.setContent(content);
-        entity.setMsgType(msgType == null ? "text" : msgType);
+        entity.setMsgType(msgType == null ? ChatMessageType.TEXT.getValue() : msgType);
         entity.setStatus(ChatMessageStatus.NOT_DELIVERED.getValue());
         entity.setCreateTime(LocalDateTime.now());
         messageService.save(entity);
