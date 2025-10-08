@@ -9,6 +9,7 @@ import com.ruoyi.web.domain.model.LoginUser;
 import com.ruoyi.web.enums.ChatMessageStatus;
 import com.ruoyi.web.enums.ChatMessageType;
 import com.ruoyi.web.service.ISysChatMessageService;
+import com.ruoyi.web.service.ISysUserService;
 import com.ruoyi.web.service.TokenService;
 import com.ruoyi.web.utils.SnowflakeIdWorker;
 import com.ruoyi.web.utils.spring.SpringUtils;
@@ -38,6 +39,7 @@ public class WebSocketServerHandler extends SimpleChannelInboundHandler<TextWebS
     private final SnowflakeIdWorker idWorker = SpringUtils.getBean(SnowflakeIdWorker.class);
     private final RedisTemplate<Object, Object> redisTemplate = SpringUtils.getBean("redisTemplate");
     private final TokenService tokenService = SpringUtils.getBean(TokenService.class);
+    private final ISysUserService userService = SpringUtils.getBean(ISysUserService.class);
 
     private String currentUserId;
 
@@ -168,6 +170,7 @@ public class WebSocketServerHandler extends SimpleChannelInboundHandler<TextWebS
                 channel.writeAndFlush(new TextWebSocketFrame(JSON.toJSONString(m)));
                 messageService.markAsDelivered(messageId);
                 // 清理未读计数（按会话维度需要fromUserId，此处不便一一减少，延后至客户端回执已读时）
+                redisTemplate.opsForHash().increment(UNREAD_PREFIX + currentUserId, m.getFromUserId(), -1);
             }
         }
         // 上线后可选：返回当前所有会话未读数

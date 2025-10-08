@@ -48,8 +48,8 @@ public class SnowflakeIdWorker {
                 | (workerId << workerIdShift)
                 | sequence;
         // 追加一个低位的安全计数，确保字符串唯一
-        long suffix = safeCounter.getAndIncrement() & 0xF; // 4 bits
-        return (id << 4) | suffix;
+        long suffix = safeCounter.getAndIncrement() & 0x8; // 4 bits
+        return (id << 3) | suffix;
     }
 
     public String nextStringId() {

@@ -48,39 +48,6 @@ public class ImController {
     @Resource
     private RedisTemplate<Object, Object> redisTemplate;
 
-    @PostMapping("/send")
-    public AjaxResult send(@RequestBody ChatMessageBody messageBody, HttpServletRequest request) {
-        LoginUser loginUser = tokenService.getLoginUser(request);
-        messageBody.setFromUserId(loginUser.getUserId());
-
-        // 可选：校验是否好友
-        if (!friendRelationService.isFriend(messageBody.getFromUserId(), messageBody.getToUserId())) {
-            return AjaxResult.error("双方不是好友，无法发送消息");
-        }
-        String messageId = idWorker.nextStringId();
-        SysChatMessage entity = new SysChatMessage();
-        entity.setId(messageId);
-        entity.setFromUserId(messageBody.getFromUserId());
-        entity.setToUserId(messageBody.getToUserId());
-        entity.setContent(messageBody.getContent());
-        entity.setMsgType(messageBody.getMsgType());
-        entity.setStatus(ChatMessageStatus.NOT_DELIVERED.getValue());
-        entity.setCreateTime(LocalDateTime.now());
-        messageService.save(entity);
-
-        // 优先尝试实时推送
-        Channel ch = ChannelRegistry.get(messageBody.getToUserId());
-        if (ch != null && ch.isActive()) {
-            ch.writeAndFlush(new TextWebSocketFrame(JSON.toJSONString(entity)));
-            messageService.markAsDelivered(messageId);
-            return AjaxResult.success("已实时送达");
-        }
-        // 离线入队并累加未读
-        redisTemplate.opsForList().rightPush(OFFLINE_QUEUE_PREFIX + messageBody.getToUserId(), messageId);
-        redisTemplate.opsForHash().increment(UNREAD_PREFIX + messageBody.getToUserId(), messageBody.getFromUserId(), 1);
-        return AjaxResult.success("对方不在线，已进入离线队列");
-    }
-
     /**
      * 用户上线后拉取未读消息与各会话未读数
      */
